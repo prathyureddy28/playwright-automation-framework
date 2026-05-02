@@ -1,0 +1,15 @@
+ {
+ "PJICreds": {
+        "Username": "Admin",
+        "Password": "Adminpji@123",
+         "UsernameOfFYP": "Qualitythought",
+         "MobileNum":"9876593456",
+         "email":"Test33@gmail.com"
+    },
+    "papajohns": {
+        "Username": "Admin",
+        "Password": "admin123",
+        "url": "https://pji-web-qa.suntechsolutions.us/",
+        "UsernameOfFYP": "Qualitythought"
+    }
+}

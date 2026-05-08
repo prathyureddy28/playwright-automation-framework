@@ -55,6 +55,8 @@ export class LoginPage {
     }
     async clickSignUp() {
         await pageFixture.page.locator(this.Elements.SignUp).click();
+        await pageFixture.page.screenshot({ path: './Screenshot/screenshot.png' });
+
     }
     async enterUsername(username: string) {
         await pageFixture.page.locator(this.Elements.usernameTextbox).fill(username)

@@ -15,11 +15,12 @@ export class HomePage {
 
         DrinkCat: "//*[text()=' Beverages ']"
 
-
     }
+
 
 async clickDrinkCat(){
     await pageFixture.page.locator(this.Elements.DrinkCat).click();
+
 }
 
 }

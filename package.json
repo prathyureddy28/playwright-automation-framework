@@ -11,9 +11,10 @@
     "ts",
     "js"
   ],
-  "scripts": {
-    "test": "cucumber-js --require step-definitions/**/*.ts"
-  },
+
+ "scripts": {
+  "test": "cucumber-js FeatureFiles/*.feature --require step-definitions/**/*.ts --format json:reports/cucumber-report.json"
+},
   "devDependencies": {
     "@cucumber/cucumber": "^12.6.0",
     "@playwright/test": "^1.58.1",
@@ -21,6 +22,7 @@
     "cucumber-html-reporter": "^6.0.0",
     "playwright": "^1.58.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "rerun": "2"
   }
 }

@@ -11,5 +11,11 @@
         "Password": "admin123",
         "url": "https://pji-web-qa.suntechsolutions.us/",
         "UsernameOfFYP": "Qualitythought"
+    },
+    "Automation":{
+        "url": "https://testautomationpractice.blogspot.com/"
+    
+
     }
+
 }

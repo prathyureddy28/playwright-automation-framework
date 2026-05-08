@@ -1,18 +1,49 @@
 import { Before, After, BeforeAll, AfterAll, Status } from '@cucumber/cucumber';
-import { chromium, Browser, BrowserContext, Page } from '@playwright/test';
+import { chromium, firefox, Browser, BrowserContext, Page } from '@playwright/test';
 import { pageFixture } from '../hooks/pageFixture';
 
+let chromeBrowser: Browser;
+let edgeBrowser: Browser;
+let firefoxBrowser: Browser;
 let browser: Browser;
+
 let context: BrowserContext;
 let page: Page;
+let isBrowserLaunched = false;
 
-// Launch browser once
+// 👉 simple variable (NO process, NO globalThis)
+let browserName = 'chrome';
+
+// Launch browsers once
 BeforeAll(async () => {
-    browser = await chromium.launch({ headless: false });
+if (isBrowserLaunched) return; // 👈 prevents double launch
+    // const [chrome, fire] = await Promise.all([
+    //     chromium.launch({
+    //         channel: 'chrome',
+    //         headless: false
+    //     }),
+
+    //     firefox.launch({
+    //         //channel: 'msedge',
+    //         headless: false
+    //     })
+
+    browser = await chromium.launch({
+        channel: 'chrome',
+        headless: false
+    });
+    //chromeBrowser = chrome;
+    //firefoxBrowser = fire;
+    isBrowserLaunched = true;
+
 });
+
 
 // Create new page for each scenario
 Before(async () => {
+
+    // const browser =
+    //     browserName === 'ff' ? firefoxBrowser : chromeBrowser;
     context = await browser.newContext();
     page = await context.newPage();
 
@@ -27,15 +58,14 @@ After(async function ({ result }) {
         await this.attach(img, 'image/png');
     }
 
-    // ✅ Close ONLY after scenario completes
-    if (context) {
-        await context.close();
-    }
+    await context?.close();
 });
 
 // Close browser at end
 AfterAll(async () => {
-    if (browser) {
-        await browser.close();
-    }
+
+    //await chromeBrowser?.close();
+    //await firefoxBrowser?.close();
+    await browser.close();
+
 });

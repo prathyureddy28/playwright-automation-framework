@@ -38,6 +38,5 @@ Then("i provide the credentials", async function () {
    await lp.enterOTP();
    await lp.clickSignInBtn();
    await hp.clickDrinkCat();
-
 })
 
